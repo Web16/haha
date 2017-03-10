@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container {
+            position: relative;
+            text-align: center;
+        }
+        #btPlayPause {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -50px;
+            margin-top: -50px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        #ad {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -75px;
+            z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>练习：自定义播放控件</h1>
+    <div class="container">
+        <video id="v3" src="videos/oceans-clip.mp4" muted>您的浏览器不支持VIDEO标签！</video>
+        <img id="btPlayPause" src="img/play.png" alt=""/>
+        <img id="ad" src="img/1.jpg"/>
+    </div>
+
+    <script>
+        btPlayPause.onclick = function(){
+            if(v3.paused){
+                v3.play();
+                this.src="img/pause.png";
+            }else {
+                v3.pause();
+                this.src="img/play.png";
+            }
+        }
+
+        //鼠标离开容器则隐藏按钮，否则显示按钮
+        //mouseenter <=> mouseleave
+        //mouseover <=> mouseout
+        var container = document.querySelector('.container');
+        container.onmouseenter = function(){
+            console.log('鼠标进入...')
+            btPlayPause.style.display = 'block';
+        }
+        container.onmouseleave = function(){
+            console.log('鼠标离开...')
+            btPlayPause.style.display = 'none';
+        }
+
+        //视频暂停则显示广告，播放则隐藏广告
+        v3.onplay = function(){
+            ad.style.display = 'none';
+        }
+        v3.onpause = function(){
+            ad.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

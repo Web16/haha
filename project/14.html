@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>使用Canvas绘图技术</h1>
+    <canvas id="c14" width="500" height="400">
+        您的浏览器不支持Canvas绘图！
+    </canvas>
+    <script>
+        var ctx = c14.getContext('2d');
+
+        var g1 = ctx.createLinearGradient(100,50, 100, 50+300);
+        g1.addColorStop(0,'rgba(255,0,0,1)');
+        g1.addColorStop(0.5,'rgba(255,255,0,1)');
+        g1.addColorStop(1,'rgba(0,255,0,1)');
+
+        //ctx.fillStyle = '#f00';
+        ctx.fillStyle = g1;
+        ctx.fillRect(100,50, 30, 300);
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>使用Canvas绘图技术</h1>
+    <canvas id="c11" width="500" height="400">
+        您的浏览器不支持Canvas绘图！
+    </canvas>
+    <script>
+        var ctx = c11.getContext('2d');
+
+        var txt = '达内科技Tarena.copy';
+        //将文本绘制在左上角
+        ctx.font = '20px SimHei';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText(txt,0,20);
+
+        //将文本绘制在右上角
+        var w = ctx.measureText(txt).width;
+        ctx.fillStyle = '#f00';
+        ctx.fillText(txt,500-w,20);
+
+        //将文本绘制在右上角
+        ctx.font = '25px SimHei';
+        ctx.strokeStyle = '#0f0';
+        ctx.strokeText(txt,0,400);
+
+        //将文本绘制在右上角
+        var w = ctx.measureText(txt).width;
+        ctx.strokeText(txt,500-w,400);
+
+        //将文本绘制在中央
+        ctx.fillText(txt,250-w/2,200+20/2);
+        ctx.strokeText(txt,250-w/2,200+20/2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>使用Canvas绘图技术</h1>
+    <canvas id="c13" width="500" height="400">
+        您的浏览器不支持Canvas绘图！
+    </canvas>
+    <script>
+        var ctx = c13.getContext('2d');
+
+        //为图形和文字添加阴影
+        ctx.shadowColor = '#f00';
+        ctx.shadowBlur = 5;
+        ctx.shadowOffsetX = 5;
+        ctx.shadowOffsetY = 5;
+
+
+        var txt = '达内科技';
+        ctx.font = '40px SimHei';
+        ctx.textBaseline = 'bottom';
+
+        //绘制文本
+        var w = ctx.measureText(txt).width;
+        ctx.fillText(txt,250-w/2,200+20);
+
+        //绘制矩形
+        var rectWidth = w+20;
+        var rectHeight = 40+20;
+        ctx.strokeRect(250-rectWidth/2, 200-rectHeight/2, rectWidth, rectHeight);
+
+    </script>
+</body>
+</html>

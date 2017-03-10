@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<audio autoplay loop id="bgSound">
+    <source src="resource/bg.mp3"/>
+    <source src="resource/bg.wav"/>
+    <source src="resource/bg.ogg"/>
+</audio>
+
+<input id="bgSwitch" checked type="checkbox"/>播放背景音乐
+
+<script>
+    //bgSwitch.onchecked //不存在
+    /*bgSwitch.onclick = function(){
+     console.log(this.checked);
+     }*/
+    bgSwitch.onchange = function(){
+       if(this.checked){
+           bgSound.play();
+       }else {
+           bgSound.pause();
+       }
+    }
+
+    //如果当前背景音乐在播放，则body的背景颜色变为鲜艳的红色，否则变为淡淡的红色——使用onplay和onpause的事件监听
+    bgSound.onplay = function(){
+        document.body.style.backgroundColor="#f00";
+
+    }
+    bgSound.onpause =function(){
+        document.body.style.backgroundColor = "#fcc";
+
+    }
+</script>
+</body>
+</html>
